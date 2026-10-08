@@ -135,9 +135,12 @@ ul.feat li::before{content:"";position:absolute;left:0;top:.72em;width:8px;heigh
 .row .res{font-family:var(--mono);font-size:15px;text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
 .row .res small{display:block;font-size:12px;color:var(--muted)}
 
-.stack{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
-.stack div h3{font-size:13px;font-family:var(--mono);color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-.stack div p{font-size:15px;color:var(--ink);line-height:1.8}
+.stack{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+.stack>div{padding:4px 16px 8px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.stack>div:first-child{padding-left:0;border-left:0}
+.stack .use{margin-top:auto;padding-top:8px;font-size:12px;color:var(--accent-ink);line-height:1.5}
+.stack div h3{font-size:12px;font-family:var(--mono);color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.stack div p{font-size:14.5px;color:var(--ink);line-height:1.85;white-space:nowrap}
 
 footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
 footer .mail{font-family:var(--mono);color:var(--ink);user-select:all}
@@ -230,6 +233,13 @@ ol.life li:not(:last-child)::after{content:"→";position:absolute;right:-7px;to
 ol.life .ln{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--accent-ink)}
 ol.life h3{font-size:15.5px;font-weight:600}
 ol.life p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.stack2{border-top:1px solid var(--line)}
+.srow{display:grid;grid-template-columns:44px 180px minmax(0,1fr) minmax(0,.9fr);gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.srow .sn{font-family:var(--mono);font-size:12px;color:var(--accent-ink)}
+.srow h3{font-size:15.5px;font-weight:600}
+.srow p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+@media (max-width:1000px){.stack{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:24px}.stack>div:nth-child(3n+1){padding-left:0;border-left:0}}
+@media (max-width:860px){.srow{grid-template-columns:36px minmax(0,1fr);gap:6px 12px}.srow .chips,.srow p{grid-column:2}}
 @media (max-width:860px){ol.life{grid-template-columns:1fr}ol.life li,ol.life li+li{padding:14px 0;border-left:0;border-top:1px solid var(--line)}ol.life li::after{display:none}}
 @media (max-width:860px){.focus{grid-template-columns:1fr}.focus>div,.focus>div+div{padding:16px 0;border-left:0;border-top:1px solid var(--line)}}
 @media (max-width:860px){.pgrid{grid-template-columns:1fr 1fr}ol.steps li{grid-template-columns:1fr;gap:4px}}
@@ -249,9 +259,9 @@ ol.life p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
   .sec-head{grid-template-columns:1fr;gap:4px}
   .row{grid-template-columns:1fr;gap:4px}
   .row .res{text-align:left}
-  .stack{grid-template-columns:1fr 1fr}
+  .stack{grid-template-columns:1fr 1fr}.stack>div{border-left:1px solid var(--line);padding-left:16px}.stack>div:nth-child(odd){padding-left:0;border-left:0}.stack>div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
 }
-@media (max-width:420px){.wrap{padding-inline:16px}.stack{grid-template-columns:1fr}}
+@media (max-width:420px){.wrap{padding-inline:16px}.stack{grid-template-columns:1fr}.stack>div,.stack>div:nth-child(odd){padding-left:0;border-left:0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -625,15 +635,17 @@ ol.life p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
   <section id="stack">
     <div class="sec-head"><div class="label">Stack</div><h2>사용 기술</h2></div>
     <div class="stack">
-      <div><h3>Vision</h3><p>SegFormer<br>Mask2Former<br>D-LinkNet+<br>YOLO</p></div>
-      <div><h3>ML</h3><p>Python · PyTorch<br>양자화 · 경량화<br>타일 추론</p></div>
-      <div><h3>Geo</h3><p>QGIS · PyQGIS 플러그인<br>공간정보 DB<br>포인트클라우드</p></div>
-      <div><h3>Serving</h3><p>Docker<br>FastAPI · Django<br>Git</p></div>
+      <div><h3>Data · GIS</h3><p>rasterio<br>GeoPandas<br>Shapely · GPKG<br>QGIS<br>라벨 QA</p><span class="use">정답 벡터 재구축 · 외주 라벨 검수</span></div>
+      <div><h3>Training</h3><p>Python<br>PyTorch<br>TensorFlow<br>전이학습<br>DDP · bf16</p><span class="use">RTX 4090 × 4</span></div>
+      <div><h3>Vision</h3><p>D-LinkNet+<br>HRNet<br>SegFormer<br>Mask2Former<br>P2PFormer<br>YOLO · SAM2</p><span class="use">분할 7종 비교 · 변화탐지</span></div>
+      <div><h3>Audio · TS · Gen</h3><p>Wave-U-Net<br>BioCPPNet<br>MAML<br>LSTM<br>음악 생성 모델</p><span class="use">논문 3편 · Muzig</span></div>
+      <div><h3>Evaluation</h3><p>IoU · F1<br>인스턴스 F1<br>AP<br>APLS<br>PQ<br>SI-SDR</p><span class="use">병합·단절·외곽 오차 측정</span></div>
+      <div><h3>Serving</h3><p>타일 추론 · TTA<br>FastAPI<br>Django<br>Docker<br>PyQGIS<br>Git</p><span class="use">장면 9분 · QGIS · 웹</span></div>
     </div>
   </section>
 
   <footer>
-    <span>최문봉 · Geospatial AI Engineer</span>
+    <span>최문봉 · End-to-end AI Engineer</span>
     <span>연락처 <span class="mail">ansqhd7566@naver.com</span></span>
   </footer>
 </div>
