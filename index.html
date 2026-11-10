@@ -116,6 +116,11 @@ section{margin-top:96px;scroll-margin-top:32px}
 .labeling-toolbar>span{color:var(--muted)}
 .labeling-toggle{display:inline-flex;align-items:center;gap:8px;min-height:32px;cursor:pointer;white-space:nowrap}
 .labeling-toggle input{width:16px;height:16px;margin:0;accent-color:var(--accent-ink);cursor:pointer}
+.labeling-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.labeling-visual:has(#labeling-show-dp:checked) .labeling-raw-boundary{visibility:hidden}
+.labeling-visual:has(#labeling-show-dp:not(:checked)) .labeling-dp-boundary{visibility:hidden}
+.labeling-visual:has(#labeling-show-dp:checked) .labeling-raw-note{display:none}
+.labeling-visual:has(#labeling-show-dp:not(:checked)) .labeling-dp-note{display:none}
 .labeling-canvas{position:relative;overflow:hidden;background:#17211D}
 .labeling-canvas>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .labeling-geometry{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -316,6 +321,7 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
 }
 @media (max-width:420px){.wrap{padding-inline:16px}.stack{grid-template-columns:1fr}.stack>div,.stack>div:nth-child(odd){padding-left:0;border-left:0}.step{grid-template-columns:72px minmax(0,1fr);gap:4px 12px;padding:16px}.qa-card,.chart-card{padding:20px}.stat{padding-inline:8px}.stat .v{font-size:20px}.stat.hl .v{font-size:48px}}
 @media (max-width:480px){.labeling-toolbar{padding:8px 12px;font-size:12px;gap:8px}.labeling-side{grid-template-columns:minmax(0,1fr) 128px;gap:12px 16px}.labeling-side h3{font-size:20px;line-height:28px}.labeling-side>p{font-size:14px;line-height:24px}.labeling-legend{padding:12px;gap:8px 16px}}
+@media (max-width:480px){.labeling-toolbar{flex-wrap:wrap}.labeling-toolbar>span{flex-basis:100%}.labeling-actions{width:100%;justify-content:flex-end}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -517,37 +523,38 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
 
   <section id="labeling" aria-labelledby="labeling-title">
     <div class="sec-head"><div class="label">AI-assisted Labeling</div><h2 id="labeling-title">위성영상 AI 자동 라벨링</h2></div>
-    <p class="labeling-lead">건물 안을 클릭해 경계 후보를 만들고, 검수한 폴리곤을 학습자료로 연결하는 <strong>QGIS 라벨링 플러그인</strong>을 구현하였다. 반복하던 경계 작성을 클릭·보정·확정의 흐름으로 구성하였다.</p>
-    <div class="labeling-visual" aria-label="자동 라벨링 실제 실행 예시">
+    <p class="labeling-lead">클릭으로 제안한 건물 경계에 <strong>더글라스–피커 단순화</strong>를 적용하는 QGIS 라벨링 플러그인이다. 계단형 정점을 줄인 뒤 원본과 비교·검수하고, 확정한 폴리곤을 학습자료로 연결한다.</p>
+    <div class="labeling-visual" aria-label="자동 경계와 더글라스–피커 적용 결과 비교">
       <figure class="labeling-map">
-        <div class="labeling-toolbar"><span>원본 영상 위에 경계 표시</span><label class="labeling-toggle"><input id="labeling-show-boundary" type="checkbox" checked aria-controls="labeling-map-overlay">경계 표시</label></div>
+        <div class="labeling-toolbar"><span>자동 경계 · 단순화 전후 비교</span><div class="labeling-actions"><label class="labeling-toggle"><input id="labeling-show-boundary" type="checkbox" checked aria-controls="labeling-map-overlay">경계 표시</label><label class="labeling-toggle"><input id="labeling-show-dp" type="checkbox" checked aria-controls="labeling-map-overlay labeling-detail-overlay">DP 적용</label></div></div>
         <div class="labeling-canvas">
-          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 GeoTIFF의 주거지 영상. 왼쪽 붉은 지붕 건물에서 외곽선이 양호한 자동 경계 사례를 선정해 표시하였다.">
+          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 영상의 왼쪽 붉은 지붕 건물. 같은 SAM 경계의 원본과 더글라스–피커 적용 결과를 비교한다.">
           <svg id="labeling-map-overlay" class="labeling-geometry" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs><path id="labeling-saved-outline" d="M68 236 L68 237 L67 237 L67 239 L66 239 L66 240 L65 240 L65 242 L64 242 L64 244 L63 244 L63 245 L62 245 L62 247 L61 247 L61 249 L60 249 L60 251 L59 251 L59 253 L58 253 L58 255 L57 255 L57 259 L56 259 L56 284 L58 284 L58 285 L60 285 L60 286 L64 286 L64 287 L68 287 L68 288 L70 288 L70 289 L72 289 L72 288 L73 288 L73 289 L76 289 L76 290 L79 290 L79 291 L86 291 L86 289 L87 289 L87 286 L88 286 L88 284 L89 284 L89 282 L90 282 L90 275 L91 275 L91 272 L92 272 L92 268 L93 268 L93 265 L94 265 L94 260 L95 260 L95 253 L96 253 L96 249 L97 249 L97 246 L96 246 L96 242 L95 242 L95 241 L92 241 L92 240 L87 240 L87 239 L80 239 L80 237 L77 237 L77 236 Z"/></defs>
-            <use href="#labeling-saved-outline" class="labeling-boundary labeling-main-boundary"/>
+            <defs><path id="labeling-raw-outline" d="M68 236 L68 237 L67 237 L67 239 L66 239 L66 240 L65 240 L65 242 L64 242 L64 244 L63 244 L63 245 L62 245 L62 247 L61 247 L61 249 L60 249 L60 251 L59 251 L59 253 L58 253 L58 255 L57 255 L57 259 L56 259 L56 284 L58 284 L58 285 L60 285 L60 286 L64 286 L64 287 L68 287 L68 288 L70 288 L70 289 L72 289 L72 288 L73 288 L73 289 L76 289 L76 290 L79 290 L79 291 L86 291 L86 289 L87 289 L87 286 L88 286 L88 284 L89 284 L89 282 L90 282 L90 275 L91 275 L91 272 L92 272 L92 268 L93 268 L93 265 L94 265 L94 260 L95 260 L95 253 L96 253 L96 249 L97 249 L97 246 L96 246 L96 242 L95 242 L95 241 L92 241 L92 240 L87 240 L87 239 L80 239 L80 237 L77 237 L77 236 Z"/><path id="labeling-saved-outline" d="M68 236 L57 255 L56 284 L86 291 L94 265 L96 242 Z"/></defs>
+            <use href="#labeling-raw-outline" class="labeling-boundary labeling-main-boundary labeling-raw-boundary"/>
+            <use href="#labeling-saved-outline" class="labeling-boundary labeling-main-boundary labeling-dp-boundary"/>
             <circle class="labeling-prompt" cx="81" cy="275" r="3"/>
           </svg>
         </div>
-        <figcaption class="labeling-legend"><span><i class="point-key"></i>포함 클릭</span><span><i></i>확정·저장한 건물 경계</span></figcaption>
+        <figcaption class="labeling-legend"><span><i class="point-key"></i>포함 클릭</span><span class="labeling-raw-note"><i></i>SAM 원본 경계</span><span class="labeling-dp-note"><i></i>DP 적용 경계 · 2 px</span></figcaption>
       </figure>
       <div class="labeling-side">
-        <h3>클릭한 건물을<br>하나의 라벨로</h3>
-        <p>포함·제외 클릭과 꼭짓점 편집으로 경계를 보정하고, 확정한 폴리곤을 원본 좌표계로 저장한다.</p>
+        <h3>지붕 경계를<br>간결한 폴리곤으로</h3>
+        <p>원본 픽셀 기준 허용오차로 계단형 정점을 줄인다. 단순화한 윤곽을 검수하고 원본 좌표계로 저장한다.</p>
         <figure class="labeling-detail">
           <div class="labeling-canvas">
-            <img src="assets/labeling/labeling-detail-clean-outline.png" width="96" height="96" loading="lazy" decoding="async" alt="클릭한 건물의 지붕과 저장된 폴리곤 윤곽을 보여주는 확대 영상.">
-            <svg class="labeling-geometry" viewBox="28 216 96 96" aria-hidden="true"><use href="#labeling-saved-outline" class="labeling-boundary"/><circle class="labeling-prompt" cx="81" cy="275" r="2"/></svg>
+            <img src="assets/labeling/labeling-detail-clean-outline.png" width="96" height="96" loading="lazy" decoding="async" alt="같은 건물의 SAM 원본 경계와 정점 수를 줄인 DP 적용 경계를 비교하는 확대 영상.">
+            <svg id="labeling-detail-overlay" class="labeling-geometry" viewBox="28 216 96 96" aria-hidden="true"><use href="#labeling-raw-outline" class="labeling-boundary labeling-raw-boundary"/><use href="#labeling-saved-outline" class="labeling-boundary labeling-dp-boundary"/><circle class="labeling-prompt" cx="81" cy="275" r="2"/></svg>
           </div>
-          <figcaption>같은 건물의<br>저장 경계 확대</figcaption>
+          <figcaption><span class="labeling-raw-note">SAM 원본 경계</span><span class="labeling-dp-note">DP 적용 경계</span><br>같은 건물 확대</figcaption>
         </figure>
-        <dl class="labeling-meta"><dt>경계 제안</dt><dd>SAM 2.1 Tiny</dd><dt>라벨 저장</dt><dd>GeoPackage</dd><dt>원본 해상도</dt><dd class="mono">0.30 m/px</dd></dl>
+        <dl class="labeling-meta"><dt>정점 수</dt><dd class="mono"><span class="labeling-raw-note">80 · SAM</span><span class="labeling-dp-note">80 → 6</span></dd><dt>DP 허용오차</dt><dd class="mono">2 px · 0.60 m</dd><dt>경계 제안</dt><dd>SAM 2.1 Tiny</dd><dt>라벨 저장</dt><dd>GeoPackage</dd><dt>원본 해상도</dt><dd class="mono">0.30 m/px</dd></dl>
       </div>
     </div>
-    <p class="labeling-evidence">실제 실행 예시 · 2026.11.10 · 10개 건물의 결과를 비교해 외곽선이 양호한 1개 선정 · EPSG:20137</p>
+    <p class="labeling-evidence">실제 실행 예시 · 2026.11.10 · 같은 SAM 경계에 DP 적용 · EPSG:20137 · 허용오차는 도형 단순화 기준</p>
     <div class="pipeline" aria-label="자동 라벨링 작업 흐름">
       <div class="step"><span class="n">1 · 클릭</span><h3>객체 지정</h3><p>GeoTIFF 위에서 대상 객체를 클릭하고 포함·제외 지점을 추가해 경계 조건 지정</p></div>
-      <div class="step"><span class="n">2 · 자동 경계</span><h3>경계 후보 생성</h3><p>SAM 2.1 Tiny로 객체 마스크를 추론하고 원본 영상 좌표의 폴리곤 후보로 변환</p></div>
+      <div class="step"><span class="n">2 · 자동 경계</span><h3>경계 제안·단순화</h3><p>SAM 2.1 Tiny의 폴리곤 후보에 원본 픽셀 기준 DP 단순화를 적용하고 원본 좌표계 유지</p></div>
       <div class="step"><span class="n">3 · 검수</span><h3>후보 비교·수정</h3><p>지도 미리보기에서 후보를 선택하고 추가 클릭·꼭짓점 편집으로 경계 보정</p></div>
       <div class="step"><span class="n">4 · 확정</span><h3>클래스·라벨 저장</h3><p>작업자가 지정한 클래스와 확정 경계를 GPKG에 저장하고 구역별 검수 상태 관리</p></div>
       <div class="step"><span class="n">5 · 학습자료</span><h3>자료 생성·학습 연계</h3><p>train·val·test 영상·마스크를 생성하고 AI객체탐지의 건물 분할 학습 화면에 전달</p></div>
