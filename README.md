@@ -9,6 +9,6 @@
 
 페이지 보기: GitHub Pages 주소에서 확인하세요.
 
-자동 라벨링 이미지: 2026-11-03 QGIS 실행에서 저장한 건물 1개의 경계를 원본 GeoTIFF에 겹쳐 표시했습니다. 전체 영상에는 실제 포함 클릭 위치와 확대 영역을, 확대 영상에는 저장된 GeoPackage 경계를 표시합니다. 원본 RGB 밴드 순서와 EPSG:20137 좌표계를 유지했으며, 분류 정확도나 전체 장면 자동 탐지 성능을 나타내는 이미지는 아닙니다. 시각자료는 `assets/labeling/`에 있습니다.
+자동 라벨링 이미지: 2026-11-03 QGIS 실행에서 저장한 건물 1개의 경계를 원본 GeoTIFF에 겹쳐 표시했습니다. 원본 해상도의 영상과 작은 확대 보기 위에, 저장된 GeoPackage의 폴리곤을 채움 없는 SVG 윤곽선으로 표시합니다. 경계 표시를 켜고 끄며 원본 지붕을 비교할 수 있습니다. RGB 밴드 순서와 EPSG:20137 좌표계를 유지했으며, 영상 픽셀이나 경계를 보정·생성하지 않았습니다. 이 예시는 분류 정확도나 전체 장면 자동 탐지 성능을 나타내지 않습니다. 시각자료는 `assets/labeling/`에 있습니다.
 
 디자인 정리 기준: [unslop](https://github.com/heydamir/unslop) by [Damir Sokolovsky](https://x.com/heydamir), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). 기존 색상·IBM 글꼴·실제 프로젝트 시각자료를 유지하고 타이포그래피, 간격, 반응형 구성을 다듬었습니다.
