@@ -522,11 +522,11 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
       <figure class="labeling-map">
         <div class="labeling-toolbar"><span>원본 영상 위에 경계 표시</span><label class="labeling-toggle"><input id="labeling-show-boundary" type="checkbox" checked aria-controls="labeling-map-overlay">경계 표시</label></div>
         <div class="labeling-canvas">
-          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 GeoTIFF의 주거지 영상. 중앙 건물에 실제 저장된 라벨 경계와 포함 클릭 지점을 겹쳐 표시하였다.">
+          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 GeoTIFF의 주거지 영상. 오른쪽 도로변 건물에 새로 실행한 라벨 경계와 포함 클릭 지점을 겹쳐 표시하였다.">
           <svg id="labeling-map-overlay" class="labeling-geometry" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs><path id="labeling-saved-outline" d="M240 224 L240 225 L236 225 L236 226 L235 226 L235 229 L234 229 L234 234 L232 234 L232 235 L231 235 L231 237 L230 237 L230 239 L229 239 L229 242 L228 242 L228 245 L227 245 L227 247 L226 247 L226 253 L225 253 L225 259 L226 259 L226 264 L227 264 L227 273 L228 273 L228 275 L230 275 L230 276 L232 276 L232 277 L233 277 L233 278 L237 278 L237 279 L240 279 L240 280 L242 280 L242 281 L246 281 L246 282 L249 282 L249 283 L253 283 L253 284 L255 284 L255 283 L256 283 L256 281 L257 281 L257 278 L258 278 L258 274 L259 274 L259 271 L260 271 L260 267 L261 267 L261 265 L262 265 L262 262 L263 262 L263 259 L264 259 L264 255 L265 255 L265 252 L266 252 L266 246 L267 246 L267 242 L268 242 L268 236 L269 236 L269 233 L268 233 L268 231 L266 231 L266 230 L260 230 L260 229 L257 229 L257 228 L254 228 L254 227 L251 227 L251 226 L245 226 L245 225 L241 225 L241 224 Z"/></defs>
+            <defs><path id="labeling-saved-outline" d="M348 259 L348 260 L346 260 L346 262 L351 262 L351 264 L350 264 L350 263 L348 263 L348 264 L345 264 L345 265 L344 265 L344 268 L343 268 L343 269 L341 269 L341 270 L340 270 L340 271 L339 271 L339 272 L338 272 L338 274 L337 274 L337 277 L336 277 L336 285 L335 285 L335 289 L334 289 L334 307 L336 307 L336 306 L341 306 L341 307 L349 307 L349 308 L350 308 L350 309 L354 309 L354 310 L357 310 L357 311 L361 311 L361 312 L363 312 L363 313 L366 313 L366 314 L371 314 L371 313 L372 313 L372 310 L373 310 L373 307 L374 307 L374 304 L375 304 L375 300 L376 300 L376 297 L377 297 L377 296 L375 296 L375 295 L374 295 L374 294 L375 294 L375 293 L376 293 L376 295 L377 295 L377 294 L378 294 L378 289 L379 289 L379 285 L380 285 L380 276 L381 276 L381 271 L382 271 L382 268 L381 268 L381 267 L376 267 L376 266 L375 266 L375 265 L374 265 L374 261 L372 261 L372 260 L358 260 L358 261 L357 261 L357 260 L354 260 L354 259 L352 259 L352 260 L350 260 L350 259 Z M366 262 L367 262 L367 264 L368 264 L368 265 L366 265 Z"/></defs>
             <use href="#labeling-saved-outline" class="labeling-boundary labeling-main-boundary"/>
-            <circle class="labeling-prompt" cx="256" cy="256" r="3"/>
+            <circle class="labeling-prompt" cx="350" cy="302" r="3"/>
           </svg>
         </div>
         <figcaption class="labeling-legend"><span><i class="point-key"></i>포함 클릭</span><span><i></i>확정·저장한 건물 경계</span></figcaption>
@@ -536,15 +536,15 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
         <p>포함·제외 클릭과 꼭짓점 편집으로 경계를 보정하고, 확정한 폴리곤을 원본 좌표계로 저장한다.</p>
         <figure class="labeling-detail">
           <div class="labeling-canvas">
-            <img src="assets/labeling/labeling-detail.png" width="96" height="96" loading="lazy" decoding="async" alt="클릭한 건물의 지붕과 저장된 폴리곤 윤곽을 보여주는 확대 영상.">
-            <svg class="labeling-geometry" viewBox="200 208 96 96" aria-hidden="true"><use href="#labeling-saved-outline" class="labeling-boundary"/><circle class="labeling-prompt" cx="256" cy="256" r="2"/></svg>
+            <img src="assets/labeling/labeling-detail-roadside.png" width="96" height="96" loading="lazy" decoding="async" alt="클릭한 건물의 지붕과 저장된 폴리곤 윤곽을 보여주는 확대 영상.">
+            <svg class="labeling-geometry" viewBox="308 238 96 96" aria-hidden="true"><use href="#labeling-saved-outline" class="labeling-boundary"/><circle class="labeling-prompt" cx="350" cy="302" r="2"/></svg>
           </div>
           <figcaption>같은 건물의<br>저장 경계 확대</figcaption>
         </figure>
         <dl class="labeling-meta"><dt>경계 제안</dt><dd>SAM 2.1 Tiny</dd><dt>라벨 저장</dt><dd>GeoPackage</dd><dt>원본 해상도</dt><dd class="mono">0.30 m/px</dd></dl>
       </div>
     </div>
-    <p class="labeling-evidence">실제 실행 예시 · 2026.11.03 저장 · 건물 1개 · EPSG:20137 · 원본 영상과 저장된 GPKG 경계를 함께 표시</p>
+    <p class="labeling-evidence">실제 실행 예시 · 2026.11.10 재실행·저장 · 도로변 건물 1개 · EPSG:20137 · 원본 영상과 저장된 GPKG 경계를 함께 표시</p>
     <div class="pipeline" aria-label="자동 라벨링 작업 흐름">
       <div class="step"><span class="n">1 · 클릭</span><h3>객체 지정</h3><p>GeoTIFF 위에서 대상 객체를 클릭하고 포함·제외 지점을 추가해 경계 조건 지정</p></div>
       <div class="step"><span class="n">2 · 자동 경계</span><h3>경계 후보 생성</h3><p>SAM 2.1 Tiny로 객체 마스크를 추론하고 원본 영상 좌표의 폴리곤 후보로 변환</p></div>
