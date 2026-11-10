@@ -278,6 +278,36 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
 .srow .sn{font-family:var(--mono);font-size:12px;color:var(--accent-ink)}
 .srow h3{font-size:16px;font-weight:500}
 .srow p{font-size:14px;color:var(--ink-2);line-height:24px}
+/* Spatial linkage: source maps carry the color; criteria remain quiet. */
+.integration-story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:start;margin-top:32px}
+.integration-story+.integration-story{margin-top:48px;padding-top:48px;border-top:1px solid var(--line)}
+.integration-figure{margin:0;min-width:0}
+.integration-figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius)}
+.integration-figure figcaption{margin-top:12px;color:var(--muted);font-size:12px;line-height:20px}
+.integration-key{display:inline-flex;align-items:center;gap:8px;margin-right:16px}
+.integration-key i{width:8px;height:8px;border-radius:2px}
+.integration-key .eligible{background:#3e8b41}.integration-key .review{background:#c1a129}.integration-key .unmatched{background:#bd4942}
+.integration-copy{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0}
+.integration-copy h3{font-size:24px;line-height:32px}
+.integration-copy>p{color:var(--ink-2);font-size:15px;line-height:24px}
+.integration-copy .tbl-note{font-size:12px;line-height:20px;margin:0}
+.integration-table caption{text-align:left;font-size:12px;line-height:20px;color:var(--muted);padding-bottom:12px}
+.integration-copy>.tbl-wrap{margin-top:0}
+table.mt.integration-table{min-width:0}
+table.mt.integration-table th,table.mt.integration-table td{padding:12px 8px}
+table.mt.integration-table th:first-child{white-space:normal}
+.integration-result{padding-block:16px;border-block:1px solid var(--line)}
+.integration-result strong{color:var(--accent-ink);font-weight:500;margin-left:8px}
+.integration-result span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.integration-details{min-width:0;border-top:1px solid var(--line);padding-top:16px;font-size:14px}
+.integration-details summary{cursor:pointer;color:var(--ink-2);padding-block:4px}
+.integration-details summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.integration-details .tbl-wrap{margin-top:16px}
+.integration-handoff{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:32px;margin-top:40px;padding:24px 0;border-block:1px solid var(--line)}
+.integration-handoff h3{font-size:20px;line-height:28px;margin-top:8px}
+.integration-handoff p{font-size:15px;line-height:24px;color:var(--ink-2)}
+@media(max-width:860px){.integration-story,.integration-handoff{grid-template-columns:1fr;gap:24px}.integration-figure{max-width:560px}.integration-story+.integration-story{margin-top:32px;padding-top:32px}.integration-copy h3{font-size:24px;line-height:32px}}
+
 @media (max-width:1000px){.stack{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:24px}.stack>div:nth-child(3n+1){padding-left:0;border-left:0}}
 @media (max-width:860px){.srow{grid-template-columns:36px minmax(0,1fr);gap:6px 12px}.srow .chips,.srow p{grid-column:2}}
 @media (max-width:860px){ol.life{grid-template-columns:repeat(2,minmax(0,1fr))}ol.life li,ol.life li+li{padding:16px;border-left:0;border-top:1px solid var(--line);gap:4px}ol.life li:nth-child(odd){padding-left:0}ol.life li:nth-child(even){border-left:1px solid var(--line)}ol.life li:last-child{grid-column:1/-1;padding-left:0}ol.life li::after{display:none}ol.life p{line-height:20px}}
@@ -333,7 +363,7 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
       <div class="label">AI engineer · Data to deployment</div>
       <h1>최문봉 <span>Choi Munbong</span></h1>
       <p class="thesis">데이터 구축부터 배포까지, AI 전 과정을 직접 수행하는 엔지니어</p>
-      <p class="role">라벨 정의·품질 검증에서 모델 학습·평가, 추론 최적화와 QGIS·웹 배포까지 직접 구현한다. 위성영상·소리·시계열·생성형 음악에 같은 과정을 적용해 왔다. 최근에는 벡터 정답과 학습 조건을 개선해 건물 F1을 <b>0.902 → 0.924</b>로 높였다.</p>
+      <p class="role">라벨 정의·품질 검증에서 모델 학습·평가, 추론 최적화와 QGIS·웹 배포까지 직접 구현한다. 위성영상·소리·시계열·생성형 음악에 같은 과정을 적용해 왔다. 최근에는 D-LinkNet+를 고정한 데이터 개선 실험에서 건물 F1을 <b>0.899 → 0.924</b>로 높였고, 추출 결과를 필지·도로 속성과 연결하는 QGIS 검수·병합 흐름을 구현했다.</p>
     </div>
     <div class="meta">
       <span><b>(주)포스웨이브</b> AI 엔지니어</span>
@@ -344,7 +374,7 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
   </header>
   <ol class="life">
     <li><span class="ln">01 · 데이터</span><h3>구축 · 품질 검증</h3><p>SAM 2.1 보조 라벨링, 외주 검수, 래스터 정답 69,904건의 건물 단위 벡터 재구축</p></li>
-    <li><span class="ln">02 · 학습</span><h3>모델 설계 · 비교</h3><p>7개 분할 모델을 같은 조건으로 학습, 경계 Head·전이학습. 소리 분리·MAML·생성 모델까지</p></li>
+    <li><span class="ln">02 · 학습</span><h3>모델 설계 · 비교</h3><p>7개 분할 모델의 데이터·분할·처리 규칙을 통일해 비교, 경계 Head·전이학습. 소리 분리·MAML·생성 모델까지</p></li>
     <li><span class="ln">03 · 평가</span><h3>지표 설계</h3><p>공간 홀드아웃 분할, 객체 단위 F1·APLS로 픽셀 IoU가 놓치는 병합·단절 측정</p></li>
     <li><span class="ln">04 · 추론</span><h3>운영 최적화</h3><p>3.4억 픽셀 장면을 중첩 타일 추론으로 단일 GPU 9분, 메모리 2.4 GB 이하</p></li>
     <li><span class="ln">05 · 배포</span><h3>서비스 통합</h3><p>벡터화·정형화 후 GIS DB 구축, QGIS 플러그인, FastAPI·Docker 웹 서비스</p></li>
@@ -372,15 +402,15 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
       </figcaption>
     </figure>
     <div class="hero-copy">
-      <div class="label">대표 프로젝트 · 2026.04 – 2026.10 · 완료</div>
+      <div class="label">대표 프로젝트 · 2026 · 모델 개선·공간정보 연계·QGIS 구현</div>
       <h2>에티오피아 사진측량 기반 주택특성 DB 구축</h2>
-      <p>에티오피아 부동산 대량평가 모형에 들어갈 건물·도로 특성을 위성영상에서 자동으로 추출하는 용역에서 AI 엔지니어로 참여하였다. 7개 모델을 같은 조건으로 비교하고, 성능 한계가 데이터에 있다는 것을 확인한 뒤 정답을 벡터로 재구축해 모델 교체로 넘지 못한 상한을 넘었다.</p>
+      <p>에티오피아 부동산 대량평가를 위한 AI 기반 특성 DB의 구축 가능성을 검토하는 프로젝트에 AI 엔지니어로 참여하였다. 건물 7종·도로 4종 모델을 비교하고, 정답 벡터화와 타일 조건을 개선했다. 추출 이후에는 기존 도로망과 필지·POI를 연결하고, 모호한 사례를 QGIS에서 검수하는 흐름으로 확장했다.</p>
       <p class="road-line mono">도로(D-LinkNet+) · APLS 0.618 · IoU 0.658 · F1 0.782</p>
       <div class="stats">
-        <div class="stat hl"><div class="v">0.924 <small>F1 Score</small></div><div class="k">건물 추출 최종 성능 · IoU 0.859 · 모델 교체만으로는 F1 0.902</div></div>
+        <div class="stat hl"><div class="v">0.924 <small>F1 Score</small></div><div class="k">D-LinkNet+ 데이터 개선 실험 · IoU 0.859<br>모델 비교 채택: 건물 W48 · 도로 D-LinkNet+</div></div>
         <div class="stat"><div class="v">1.3 <small>GB</small></div><div class="k">건물 추론 GPU 메모리<br>도로 2.4 GB</div></div>
         <div class="stat"><div class="v">8분 53초</div><div class="k">장면 전체 건물+도로<br>단일 GPU · 2,350 타일</div></div>
-        <div class="stat"><div class="v">67,465 <small>동</small></div><div class="k">5.7 × 5.4 km 대상지<br>도로 494.7 km</div></div>
+        <div class="stat"><div class="v">67,465 <small>동</small></div><div class="k">기본 장면 추출 결과<br>5.7 × 5.4 km · 도로 494.7 km</div></div>
       </div>
     </div>
   </div>
@@ -389,7 +419,7 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
     <div class="sec-head"><div class="label">Model Selection</div><h2>모델 비교</h2></div>
     <div class="whyrow">
       <div><span class="label">왜 이 7개인가</span><h3>비교 축 분리</h3><p>인코더 용량(D-LinkNet+↔R50, HRNet↔W48), Transformer(SegFormer), 마스크 분류(Mask2Former), 폴리곤 예측(P2PFormer) 축을 각각 대표함.</p></div>
-      <div><span class="label">왜 같은 조건인가</span><h3>통제 조건 고정</h3><p>데이터·분할·전처리·증강을 고정해 차이를 모델 요인으로 한정. 컬럼 블록 홀드아웃으로 공간 누수 차단.</p></div>
+      <div><span class="label">왜 같은 조건인가</span><h3>통제 조건 고정</h3><p>데이터·분할·전처리·증강·후처리를 통일하고, 배치 크기와 학습률은 모델별로 조정. 컬럼 블록 홀드아웃 사이에 완충 1컬럼을 제외해 공간 누수를 줄임.</p></div>
       <div><span class="label">왜 객체 단위 지표인가</span><h3>객체 단위 평가</h3><p>픽셀 IoU는 건물 병합·도로 단절을 반영하지 못하므로 인스턴스 F1과 APLS를 병행.</p></div>
     </div>
     <div class="two">
@@ -455,7 +485,7 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
         <tbody><tr class=hi><th scope="row">W48</th><td>67.8</td><td>0.822</td><td>0.902</td><td>0.748</td><td>0.496</td><td>1.110</td></tr><tr><th scope="row">Mask2Former</th><td>215.5</td><td>0.811</td><td>0.896</td><td>0.734</td><td>0.462</td><td>0.966</td></tr><tr><th scope="row">SegFormer</th><td>83.2</td><td>0.812</td><td>0.896</td><td>0.733</td><td>0.486</td><td>1.057</td></tr><tr><th scope="row">D-LinkNet+</th><td>31.1</td><td>0.817</td><td>0.899</td><td>0.729</td><td>0.469</td><td>1.066</td></tr><tr><th scope="row">R50</th><td>180.0</td><td>0.817</td><td>0.899</td><td>0.728</td><td>0.483</td><td>1.026</td></tr><tr><th scope="row">HRNet</th><td>31.5</td><td>0.818</td><td>0.900</td><td>0.728</td><td>0.431</td><td>1.068</td></tr><tr><th scope="row">P2PFormer</th><td>—</td><td>0.623</td><td>0.768</td><td>0.660</td><td>0.328</td><td>0.802</td></tr></tbody>
       </table>
     </div>
-    <p class="tbl-note">동일 데이터·분할(train 873 / val 75 / test 131, 컬럼 블록 공간 홀드아웃)·전처리·증강 · SpaceNet 사전학습 후 대상지 전이학습 · 객체 수 비율 = 예측 인스턴스 수 ÷ 정답 4,274 · 도로는 D-LinkNet+가 4개 모델 중 APLS 0.618·IoU 0.658로 전 지표 1위</p>
+    <p class="tbl-note">동일 데이터·전처리·증강·후처리 · train 873 / val 75 / test 131, 완충 51타일 제외 · 배치 크기·학습률은 모델별 조정 · SpaceNet 사전학습 후 대상지 전이학습 · 객체 수 비율 = 예측 인스턴스 수 ÷ 정답 4,274 · 도로는 D-LinkNet+가 4개 모델 중 APLS 0.618·IoU 0.658로 전 지표 1위</p>
   </section>
 
   <section id="data">
@@ -474,12 +504,12 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
 <text x="306.6" y="204" class="ax" text-anchor="middle">0.84</text>
 <line x1="384.9" x2="384.9" y1="10" y2="186" class="gl"/>
 <text x="384.9" y="204" class="ax" text-anchor="middle">0.86</text>
-<g class="dot-row" tabindex="0"><title>모델 7종 최저 · IoU 0.8110</title><rect x="0" y="16.0" width="480" height="34" class="hit"/>
-<text x="140" y="38.0" class="lbl" text-anchor="end">모델 7종 최저</text>
+<g class="dot-row" tabindex="0"><title>모델 6종 최저 · IoU 0.8110</title><rect x="0" y="16.0" width="480" height="34" class="hit"/>
+<text x="140" y="38.0" class="lbl" text-anchor="end">모델 6종 최저</text>
 <circle cx="193.1" cy="33.0" r="6" class="d"/>
 <text x="204.1" y="38.0" class="val">0.811</text></g>
-<g class="dot-row" tabindex="0"><title>모델 7종 최고 (W48) · IoU 0.8220</title><rect x="0" y="50.0" width="480" height="34" class="hit"/>
-<text x="140" y="72.0" class="lbl" text-anchor="end">모델 7종 최고 (W48)</text>
+<g class="dot-row" tabindex="0"><title>모델 6종 최고 (W48) · IoU 0.8220</title><rect x="0" y="50.0" width="480" height="34" class="hit"/>
+<text x="140" y="72.0" class="lbl" text-anchor="end">모델 6종 최고 (W48)</text>
 <circle cx="236.1" cy="67.0" r="6" class="d"/>
 <text x="247.1" y="72.0" class="val">0.822</text></g>
 <g class="dot-row" tabindex="0"><title>기준: D-LinkNet+ · IoU 0.8170</title><rect x="0" y="84.0" width="480" height="34" class="hit"/>
@@ -490,18 +520,18 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
 <text x="140" y="140.0" class="lbl" text-anchor="end">+ 정답 벡터 재구축</text>
 <circle cx="334.4" cy="135.0" r="6" class="d-after"/>
 <text x="345.4" y="140.0" class="val">0.847</text></g>
-<g class="dot-row" tabindex="0"><title>+ 1024px 타일 · IoU 0.8586</title><rect x="0" y="152.0" width="480" height="34" class="hit"/>
-<text x="140" y="174.0" class="lbl lbl-hi" text-anchor="end">+ 1024px 타일</text>
+<g class="dot-row" tabindex="0"><title>+ 25% 중첩·1024px · IoU 0.8586</title><rect x="0" y="152.0" width="480" height="34" class="hit"/>
+<text x="140" y="174.0" class="lbl lbl-hi" text-anchor="end">+ 25% 중첩·1024px</text>
 <circle cx="379.4" cy="169.0" r="6" class="d-after"/>
 <text x="390.4" y="174.0" class="val">0.859</text></g>
 </svg>
-        <p class="tbl-note" style="margin-top:4px">음영 = 모델 6종(P2PFormer 제외)이 수렴한 범위 · 데이터 실험은 모델을 D-LinkNet+(31.1M)로 고정 — 가장 작아 학습이 빨라 여러 데이터 조건을 반복 비교하기 좋고, 차이가 데이터에서만 나오게 하기 위해</p>
+        <p class="tbl-note" style="margin-top:4px">음영 = 모델 6종(P2PFormer 제외)이 수렴한 범위 · 데이터 실험은 모델을 D-LinkNet+(31.1M)로 고정 — 동일 모델에서 정답 표현과 타일 조건을 바꾸어 데이터 개선 효과를 비교</p>
       </div>
       <ul class="findings">
-        <li><b class="n">진단</b><span>모든 모델에서 <strong>같은 위치에 같은 오류</strong>가 나왔다. 모델마다 다른 오류면 모델 문제지만, 공통 오류는 함께 학습한 데이터에서 비롯된다. 정답에 인접 건물 구분 불명확, 측면·그림자 포함, 폴리곤 중첩이 섞여 있었고, 512px로 겹침 없이 자르면 건물 13.6%가 어느 타일에서도 온전히 나오지 않았다.</span></li>
+        <li><b class="n">진단</b><span>모든 모델에서 <strong>같은 위치에 같은 오류</strong>가 나왔다. 모델마다 다른 오류면 모델 문제지만, 공통 오류는 함께 학습한 데이터에서 비롯된다. 정답에 인접 건물 구분 불명확, 측면·그림자 포함, 폴리곤 중첩이 섞여 있었고, 512px로 겹침 없이 자르면 64,887동 중 9,289동(14.3%)이 어느 타일에서도 온전히 나오지 않았다.</span></li>
         <li><b class="n">시도 1</b><span><strong class="t">타지역 데이터 추가</strong><span class="w">신규 영상 구매·라벨링 없이 데이터 양과 다양성을 늘리기 위함.</span> 케냐·우간다·수단 라벨을 단독·조합 6가지로 더했지만 모두 대상지 성능이 떨어졌다. 학습 데이터의 56%를 차지한 수단 정답의 경계 품질이 가장 낮아(경계 IoU 0.190), 수단이 들어가면 외곽 정밀도가 0.088–0.122 하락하였다. 양보다 정답 품질이 중요하다고 보고 제외하였다.</span></li>
-        <li><b class="n">시도 2</b><span><strong class="t">정답을 벡터로 재구축</strong><span class="w">25화소 크기 건물은 외곽 1화소 오차에도 IoU가 0.856으로 하락하나, 래스터 정답은 재타일링마다 경계가 어긋났음.</span> 타일 단위 래스터 정답 69,904건을 장면 단위로 합쳐 건물 1동 = 폴리곤 1개인 GPKG(64,887동)로 바꾸고, 학습 직전에만 고정 규칙으로 라벨을 만들었다. IoU <strong>0.817 → 0.847</strong>, F1 0.899 → 0.917.</span></li>
-        <li><b class="n">시도 3</b><span><strong class="t">25% 중첩 · 1024px 타일</strong><span class="w">건물 13.6%가 항상 잘린 형태로만 학습되어 타일 가장자리에서 미탐이 발생하였음.</span> 25% 중첩으로 온전히 학습되는 건물을 86.4% → 99.9%로 늘렸고, 75%는 과적합으로 오히려 떨어졌다(IoU 0.801). 타일을 1024px로 키우자 오탐이 줄어(정밀도 +0.010) IoU <strong>0.859</strong>, F1 <strong>0.924</strong>.</span></li>
+        <li><b class="n">시도 2</b><span><strong class="t">정답을 벡터로 재구축</strong><span class="w">25화소 크기 건물은 외곽 1화소 오차에도 IoU가 0.856으로 하락하나, 래스터 정답은 재타일링마다 경계가 어긋났음.</span> 타일 단위 래스터 정답 69,904건을 장면 단위로 합쳐 건물 1동 = 폴리곤 1개인 GPKG(64,887동, EPSG:32637)로 바꾸고, 내부 홀을 보존하며 무효·빈 도형과 1 m² 미만 객체를 정리했다. 학습 직전에 내부·경계 라벨을 고정 규칙으로 생성했다. IoU <strong>0.817 → 0.847</strong>, F1 0.899 → 0.917.</span></li>
+        <li><b class="n">시도 3</b><span><strong class="t">25% 중첩 · 1024px 타일</strong><span class="w">512px 무중첩에서 온전한 형태를 한 번도 보지 못하는 건물이 14.3%였음.</span> 25% 중첩으로 온전한 건물 포함률을 85.7% → 99.9%로 높였다. 타일 수는 무중첩 1,130장에서 1,993장으로 늘었으며, 75% 중첩의 17,420장보다 반복·저장 부담이 작았다. 벡터 정답에 25% 중첩·1024px를 적용한 실험에서 IoU <strong>0.859</strong>, F1 <strong>0.924</strong>를 얻었다.</span></li>
         <li><b class="n">결과</b><span>기준 대비 IoU <strong>+0.042</strong>. 모델 교체로 얻은 차이(0.011)의 약 4배에 해당한다.</span></li>
       </ul>
     </div>
@@ -514,11 +544,11 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
           <tr><th scope="row">+ 에티오피아·수단</th><td>0.777</td><td>0.662*</td><td>0.394*</td><td>제외</td></tr>
           <tr><th scope="row">중첩 25% · 50% · 75%</th><td>0.821 · 0.819 · 0.801</td><td>0.912 · 0.907 · 0.855</td><td>0.481 · 0.474 · 0.435</td><td>25% 채택</td></tr>
           <tr><th scope="row">정답 벡터 재구축 (512px)</th><td>0.847</td><td>0.917</td><td>0.483</td><td>채택</td></tr>
-          <tr class="hi"><th scope="row">정답 벡터 재구축 + 1024px 타일</th><td>0.859</td><td>0.924</td><td>0.489</td><td>최종</td></tr>
+          <tr class="hi"><th scope="row">벡터 정답 + 25% 중첩·1024px</th><td>0.859</td><td>0.924</td><td>0.489</td><td>데이터 조건 채택</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tbl-note">* 타지역 실험은 256px 공통 규격(대상지 기준 F1 0.763, F1@0.50:0.95 0.516)에서 측정해 F1 계열은 같은 실험 안에서만 비교 · 평가는 모든 조건에서 에티오피아 평가 영역만 사용</p>
+    <p class="tbl-note">* 타지역 실험은 256px 공통 규격(대상지 기준 F1 0.763, F1@0.50:0.95 0.516)에서 측정해 F1 계열은 같은 실험 안에서만 비교 · 평가는 모든 조건에서 에티오피아 평가 영역만 사용 · 모델 비교의 W48 채택과 D-LinkNet+ 데이터 개선 실험을 구분 · 출처: 2026.10.30 회의자료 5·20–28쪽</p>
   </section>
 
   <section id="labeling" aria-labelledby="labeling-title">
@@ -528,15 +558,15 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
       <figure class="labeling-map">
         <div class="labeling-toolbar"><span>자동 경계 · 단순화 전후 비교</span><div class="labeling-actions"><label class="labeling-toggle"><input id="labeling-show-boundary" type="checkbox" checked aria-controls="labeling-map-overlay">경계 표시</label><label class="labeling-toggle"><input id="labeling-show-dp" type="checkbox" checked aria-controls="labeling-map-overlay labeling-detail-overlay">DP 적용</label></div></div>
         <div class="labeling-canvas">
-          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 영상의 왼쪽 붉은 지붕 건물. 같은 SAM 경계의 원본과 더글라스–피커 적용 결과를 비교한다.">
+          <img src="assets/labeling/labeling-scene.png" width="512" height="512" loading="lazy" decoding="async" alt="원본 영상 중앙 위쪽의 붉은 지붕 건물. 같은 SAM 경계의 원본과 더글라스–피커 적용 결과를 비교한다.">
           <svg id="labeling-map-overlay" class="labeling-geometry" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs><path id="labeling-raw-outline" d="M68 236 L68 237 L67 237 L67 239 L66 239 L66 240 L65 240 L65 242 L64 242 L64 244 L63 244 L63 245 L62 245 L62 247 L61 247 L61 249 L60 249 L60 251 L59 251 L59 253 L58 253 L58 255 L57 255 L57 259 L56 259 L56 284 L58 284 L58 285 L60 285 L60 286 L64 286 L64 287 L68 287 L68 288 L70 288 L70 289 L72 289 L72 288 L73 288 L73 289 L76 289 L76 290 L79 290 L79 291 L86 291 L86 289 L87 289 L87 286 L88 286 L88 284 L89 284 L89 282 L90 282 L90 275 L91 275 L91 272 L92 272 L92 268 L93 268 L93 265 L94 265 L94 260 L95 260 L95 253 L96 253 L96 249 L97 249 L97 246 L96 246 L96 242 L95 242 L95 241 L92 241 L92 240 L87 240 L87 239 L80 239 L80 237 L77 237 L77 236 Z"/><path id="labeling-saved-outline" d="M68 236 L57 255 L56 284 L86 291 L94 265 L96 242 Z"/></defs>
+            <defs><path id="labeling-raw-outline" d="M251 169 L251 170 L250 170 L250 171 L249 171 L249 174 L248 174 L248 178 L247 178 L247 180 L246 180 L246 182 L245 182 L245 183 L244 183 L244 185 L243 185 L243 187 L242 187 L242 189 L241 189 L241 192 L240 192 L240 200 L239 200 L239 206 L240 206 L240 209 L239 209 L239 217 L238 217 L238 219 L239 219 L239 220 L240 220 L240 221 L241 221 L241 222 L244 222 L244 223 L248 223 L248 224 L255 224 L255 225 L258 225 L258 226 L261 226 L261 227 L265 227 L265 228 L270 228 L270 227 L271 227 L271 226 L272 226 L272 222 L273 222 L273 218 L274 218 L274 214 L275 214 L275 210 L276 210 L276 206 L277 206 L277 203 L278 203 L278 200 L279 200 L279 198 L280 198 L280 196 L281 196 L281 192 L282 192 L282 189 L283 189 L283 186 L284 186 L284 179 L283 179 L283 178 L281 178 L281 177 L280 177 L280 176 L277 176 L277 175 L273 175 L273 174 L269 174 L269 173 L267 173 L267 172 L263 172 L263 171 L259 171 L259 170 L254 170 L254 169 Z"/><path id="labeling-saved-outline" d="M251 169 L238 219 L270 228 L284 179 Z"/></defs>
             <use href="#labeling-raw-outline" class="labeling-boundary labeling-main-boundary labeling-raw-boundary"/>
             <use href="#labeling-saved-outline" class="labeling-boundary labeling-main-boundary labeling-dp-boundary"/>
-            <circle class="labeling-prompt" cx="81" cy="275" r="3"/>
+            <circle class="labeling-prompt" cx="258" cy="204" r="3"/>
           </svg>
         </div>
-        <figcaption class="labeling-legend"><span><i class="point-key"></i>포함 클릭</span><span class="labeling-raw-note"><i></i>SAM 원본 경계</span><span class="labeling-dp-note"><i></i>DP 적용 경계 · 2 px</span></figcaption>
+        <figcaption class="labeling-legend"><span><i class="point-key"></i>포함 클릭</span><span class="labeling-raw-note"><i></i>SAM 원본 경계</span><span class="labeling-dp-note"><i></i>DP 적용 경계 · 5 px</span></figcaption>
       </figure>
       <div class="labeling-side">
         <h3>지붕 경계를<br>간결한 폴리곤으로</h3>
@@ -544,14 +574,14 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
         <figure class="labeling-detail">
           <div class="labeling-canvas">
             <img src="assets/labeling/labeling-detail-clean-outline.png" width="96" height="96" loading="lazy" decoding="async" alt="같은 건물의 SAM 원본 경계와 정점 수를 줄인 DP 적용 경계를 비교하는 확대 영상.">
-            <svg id="labeling-detail-overlay" class="labeling-geometry" viewBox="28 216 96 96" aria-hidden="true"><use href="#labeling-raw-outline" class="labeling-boundary labeling-raw-boundary"/><use href="#labeling-saved-outline" class="labeling-boundary labeling-dp-boundary"/><circle class="labeling-prompt" cx="81" cy="275" r="2"/></svg>
+            <svg id="labeling-detail-overlay" class="labeling-geometry" viewBox="213 151 96 96" aria-hidden="true"><use href="#labeling-raw-outline" class="labeling-boundary labeling-raw-boundary"/><use href="#labeling-saved-outline" class="labeling-boundary labeling-dp-boundary"/><circle class="labeling-prompt" cx="258" cy="204" r="2"/></svg>
           </div>
           <figcaption><span class="labeling-raw-note">SAM 원본 경계</span><span class="labeling-dp-note">DP 적용 경계</span><br>같은 건물 확대</figcaption>
         </figure>
-        <dl class="labeling-meta"><dt>정점 수</dt><dd class="mono"><span class="labeling-raw-note">80 · SAM</span><span class="labeling-dp-note">80 → 6</span></dd><dt>DP 허용오차</dt><dd class="mono">2 px · 0.60 m</dd><dt>경계 제안</dt><dd>SAM 2.1 Tiny</dd><dt>라벨 저장</dt><dd>GeoPackage</dd><dt>원본 해상도</dt><dd class="mono">0.30 m/px</dd></dl>
+        <dl class="labeling-meta"><dt>정점 수</dt><dd class="mono"><span class="labeling-raw-note">100 · SAM</span><span class="labeling-dp-note">100 → 4</span></dd><dt>DP 허용오차</dt><dd class="mono">5 px · 1.50 m</dd><dt>경계 제안</dt><dd>SAM 2.1 Tiny</dd><dt>라벨 저장</dt><dd>GeoPackage</dd><dt>원본 해상도</dt><dd class="mono">0.30 m/px</dd></dl>
       </div>
     </div>
-    <p class="labeling-evidence">실제 실행 예시 · 2026.11.10 · 같은 SAM 경계에 DP 적용 · EPSG:20137 · 허용오차는 도형 단순화 기준</p>
+    <p class="labeling-evidence">실제 실행 예시 · 2026.11.10 · 다른 건물의 SAM 경계에 DP 5 px 적용 · EPSG:20137 · 도형 단순화 허용오차이며 위치 정확도를 뜻하지 않음</p>
     <div class="pipeline" aria-label="자동 라벨링 작업 흐름">
       <div class="step"><span class="n">1 · 클릭</span><h3>객체 지정</h3><p>GeoTIFF 위에서 대상 객체를 클릭하고 포함·제외 지점을 추가해 경계 조건 지정</p></div>
       <div class="step"><span class="n">2 · 자동 경계</span><h3>경계 제안·단순화</h3><p>SAM 2.1 Tiny의 폴리곤 후보에 원본 픽셀 기준 DP 단순화를 적용하고 원본 좌표계 유지</p></div>
@@ -608,11 +638,38 @@ ol.life p{font-size:14px;color:var(--ink-2);line-height:24px}
     <div class="sec-head"><div class="label">End-to-End</div><h2>End-to-End 파이프라인</h2></div>
     <div class="pipeline">
       <div class="step"><span class="n">1 · 입력</span><h3>입력 정합</h3><p>14bit 영상을 장면 전역 백분위로 재스케일하고 B·G·R 밴드 순서를 바로잡아 학습·추론 입력 분포 일치</p><p class="why"><b>왜</b>14bit·B-G-R 입력이 8bit RGB 사전학습 모델의 대비와 색을 왜곡함.</p></div>
-      <div class="step"><span class="n">2 · 모델</span><h3>7개 모델 비교</h3><p>D-LinkNet+, R50, HRNet, W48, SegFormer, Mask2Former, P2PFormer를 같은 데이터·분할·증강으로 학습해 비교</p><p class="why"><b>왜</b>구조·규모를 함께 바꾸어야 성능 차이의 원인을 분리할 수 있음. 대상지 1,130장 부족분은 전이학습으로 보완.</p></div>
+      <div class="step"><span class="n">2 · 모델</span><h3>7개 모델 비교</h3><p>건물 7종의 데이터·분할·전처리·증강·후처리를 통일하고 배치 크기·학습률은 모델별 조정해 비교</p><p class="why"><b>왜</b>구조·규모를 함께 바꾸어야 성능 차이의 원인을 분리할 수 있음. 대상지 1,130장 부족분은 전이학습으로 보완.</p></div>
       <div class="step"><span class="n">3 · 추론</span><h3>장면 전역 타일 추론</h3><p>19,034×17,950px 영상을 512px·25% 중첩 2,350타일로 추론하고 확률맵을 평균 병합, 무효화소 배제</p><p class="why"><b>왜</b>겹침 없는 분할은 타일 경계에서 건물 절단·도로 단절을 일으킴.</p></div>
       <div class="step"><span class="n">4 · 후처리</span><h3>인스턴스 분리</h3><p>경계 Head로 건물 사이 벽을 차감해 seed를 만들고 연결성분으로 개별 건물 ID 부여</p><p class="why"><b>왜</b>대량평가에 건물별 ID·면적이 필요하나, 픽셀 분류로는 맞닿은 건물이 병합됨.</p></div>
       <div class="step"><span class="n">5 · 벡터화</span><h3>정형화·DB 구축</h3><p>지배각 직교 정형화로 정점 89% 축소(94 → 10개), 도로는 중심선·폭·위상 그래프로 변환해 QGIS 검수 후 DB 적재</p><p class="why"><b>왜</b>면적이 가격 변수이므로 L자·ㄷ자 형상을 보존하는 정형화가 필요함. 도로는 기존 도로망 연계용 중심선·폭·위상 필요.</p></div>
     </div>
+  </section>
+
+  <section id="integration" aria-labelledby="integration-title">
+    <div class="sec-head"><div class="label">Spatial Integration</div><h2 id="integration-title">추출한 객체를 필지·도로 정보로 연결</h2></div>
+    <p class="labeling-lead">분할 결과가 부동산 특성 DB로 이어지도록 공간 연결 규칙과 검수 기준을 함께 설계했다. 도로는 중심선·폭·방향으로 기존 노선을 연결하고, 건물은 중심점과 필지 중첩률로 자동 반영 후보와 검토 대상을 나눈다.</p>
+    <div class="integration-story">
+      <figure class="integration-figure"><img src="assets/ppt-20261030/road-linkage.png" width="800" height="800" loading="lazy" decoding="async" alt="AI 도로 폴리곤과 기존 노선의 공간 연결 상태를 지도에서 검토한 회의자료 화면"><figcaption>AI 도로와 기존 노선의 연결 검토 · 회의자료 31쪽</figcaption></figure>
+      <div class="integration-copy">
+        <div class="label">01 · 도로 속성 연결</div><h3>가까운 노선에서<br>방향과 길이가 맞는 노선으로</h3>
+        <p>도로 폴리곤 7,751개에서 중심선 9,424개와 평균 폭을 생성했다. 추가 허용폭·방향차·일치 길이 비율로 후보를 좁히고, 유일한 1:1 연결에만 RoadType·obj_ID를 반영했다.</p>
+        <div class="tbl-wrap"><table class="mt integration-table"><caption>중심선 9,424개의 조건별 연결 상태</caption><thead><tr><th>허용폭 / 길이 / 방향</th><th>1:1</th><th>중복</th><th>미연결</th></tr></thead><tbody><tr><th scope="row">이전 · 2 m / 50% / 40°</th><td>2,617</td><td>187</td><td>6,620</td></tr><tr class="hi"><th scope="row">적용 · 2 m / 60% / 20°</th><td>2,551</td><td>103</td><td>6,770</td></tr></tbody></table></div>
+        <p class="integration-result">중복 연결 후보 <strong class="mono">187 → 103</strong><span>84개 감소 · 같은 비교에서 1:1 연결 66개 감소</span></p>
+        <p class="tbl-note">미연결·중복 객체는 도형을 유지해 별도 검수한다. 위 수치는 연결 상태 집계이며 정답 대조 정확도는 아니다.</p>
+      </div>
+    </div>
+    <div class="integration-story integration-story-building">
+      <figure class="integration-figure"><img src="assets/ppt-20261030/building-parcel-review.png" width="800" height="800" loading="lazy" decoding="async" alt="하늘색 필지 경계와 건물 중심점을 겹쳐 초록색 반영 후보, 노란색 검토 대상, 빨간색 입력 제외 대상을 구분한 지도"><figcaption><span class="integration-key"><i class="eligible"></i>반영 후보</span><span class="integration-key"><i class="review"></i>검토 대상</span><span class="integration-key"><i class="unmatched"></i>입력 제외</span><br>중심점·중첩률 기반 건물 사례 검토 · 회의자료 41쪽</figcaption></figure>
+      <div class="integration-copy">
+        <div class="label">02 · 건물·필지·POI 연결</div><h3>연결이 모호한 건물을<br>검수 대상으로 남기다</h3>
+        <p>건물 중심점이 필지 안에 있고, 중첩률이 기준 이상이며 연결 필지가 하나인 경우를 자동 반영 후보로 정의했다. 다중 필지·국소 겹침·중심점 외부 사례는 검토하고, 연결이 확정된 건물에 필지 ID·UNIQUEPARC와 POI 목록을 함께 저장한다.</p>
+        <div class="tbl-wrap"><table class="mt integration-table"><caption>위치 보정 사례의 규칙별 분류 · 건물 67,507동</caption><thead><tr><th>분류</th><th>보정 전</th><th>보정 후</th></tr></thead><tbody><tr class="hi"><th scope="row">반영 후보 · 사례 1</th><td>7,648</td><td>13,557</td></tr><tr><th scope="row">검토 대상 · 사례 2–5</th><td>18,728</td><td>12,189</td></tr><tr><th scope="row">겹침 없음 · 사례 6</th><td>41,131</td><td>41,761</td></tr></tbody></table></div>
+        <p class="tbl-note">CRS·데이텀 변환과 잔여 위치 편차를 구분해 검토했다. 표는 개별 위치 보정 사례의 분류 변화이며 정확도 개선율을 뜻하지 않는다. 기본 장면 추출 67,465동과 별도의 연계 실험 자료다.</p>
+        <details class="integration-details"><summary>건물 연결의 6가지 검수 기준</summary><div class="tbl-wrap"><table class="mt"><thead><tr><th>사례</th><th>중심점</th><th>필지와의 관계</th><th>처리</th></tr></thead><tbody><tr><th scope="row">1</th><td>내부</td><td>중첩률 기준 이상 · 필지 1개</td><td>반영 후보</td></tr><tr><th scope="row">2</th><td>내부</td><td>중첩률 기준 이상 · 다중 필지</td><td>검토</td></tr><tr><th scope="row">3</th><td>내부</td><td>중첩률 기준 미만</td><td>검토</td></tr><tr><th scope="row">4</th><td>외부</td><td>필지 1개와 겹침</td><td>검토</td></tr><tr><th scope="row">5</th><td>외부</td><td>다중 필지와 겹침</td><td>검토</td></tr><tr><th scope="row">6</th><td>외부</td><td>겹침 없음</td><td>미연결</td></tr></tbody></table></div></details>
+      </div>
+    </div>
+    <div class="integration-handoff"><div><div class="label">QGIS · 검수에서 병합까지</div><h3>사례 확인 → 연결 확정 → 필지·건물 속성 병합</h3></div><p>AI 객체탐지 플러그인에 건물 사례 검토와 검토 후 필지 병합 화면을 통합했다. 학습·재학습, 영상 추론, 폴리곤 저장과 공간정보 연계를 같은 작업 흐름에서 처리한다. 필지에서 상속한 POI는 필지 맥락 정보이며, 개별 건물의 실제 용도를 확인한 정답으로 취급하지 않는다.</p></div>
+    <p class="tbl-note">출처: 프로젝트 회의자료(2026.10.30) 31–42·50·71–77쪽 · 지도는 자료에 포함된 실제 검토 화면 · 건물 67,507동의 공간 연계 실험과 모델 평가 결과는 서로 다른 집계</p>
   </section>
 
   <section id="platform">

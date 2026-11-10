@@ -1,0 +1,29 @@
+{
+  "source": "20261030_부동산원 회의.pptx",
+  "date": "2026-10-30",
+  "source_sha256": "a6bb08c70918e5c05d4e02438ff26257fef234ca5e4d335421a3d4ed8bbcf01a",
+  "images": [
+    {
+      "file": "road-linkage.png",
+      "slide": 31,
+      "sha256": "f22aed4fcd98b55dd9e4d2c1e0997e4e8933e4b00eebd9f386e681ea24bc0581",
+      "treatment": "Original embedded image, unchanged bytes"
+    },
+    {
+      "file": "building-parcel-review.png",
+      "slide": 41,
+      "sha256": "064c0faaf8cdb4a190ecbcd6bcbfddaa0ced2a009c2b091d2eccf3a5ce7faa16",
+      "treatment": "Original embedded image, unchanged bytes"
+    }
+  ],
+  "tables": {
+    "road_statuses_slide": 38,
+    "building_cases_slide": 42,
+    "building_alignment_slide": 50
+  },
+  "caveats": [
+    "Matching status counts are not measured accuracy.",
+    "Parcel POI inheritance is context, not verified individual building use.",
+    "67,465 baseline extraction and 67,507 linkage experiment are different populations."
+  ]
+}
