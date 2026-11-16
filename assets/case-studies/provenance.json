@@ -41,5 +41,22 @@
       "kind": "Conceptual model-routing diagram"
     }
   ],
-  "spatial_evidence": "Existing presentation provenance in assets/ppt-20261030/provenance.json and existing labeling example retained."
+  "spatial_evidence": "Existing presentation provenance in assets/ppt-20261030/provenance.json and existing labeling example retained.",
+  "technical_decisions": {
+    "updated": "2026-11-16",
+    "count": 68,
+    "group_count": 7,
+    "data_file": "technology-decisions.json",
+    "basis": [
+      "Existing portfolio cases and source presentation",
+      "Current project model/config/training and QGIS code",
+      "Existing professional source documents",
+      "User confirmation that additional segmentation models were applied"
+    ],
+    "definitions": [
+      "https://docs.ultralytics.com/tasks/segment/",
+      "https://www.tensorflow.org/guide/keras",
+      "https://arxiv.org/abs/1811.02508"
+    ]
+  }
 }
