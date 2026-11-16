@@ -1,0 +1,45 @@
+{
+  "updated": "2026-11-16",
+  "scope": "Problem, method, rationale, and evidence for vision, audio, and music generation.",
+  "sources": [
+    {
+      "title": "최문봉_포트폴리오.pdf",
+      "sha256": "47c8d1203f2fecdaa82ef6c740aa4b5b6f543a55d5084548e62adb1f2512ecf5",
+      "use": "Professional project descriptions; original private file is not published."
+    },
+    {
+      "title": "최문봉 경력기술서.pdf",
+      "sha256": "631c216bc500142b0ead805869ffcae81a9099f07c8c29494cc7382e4f0ba8a4",
+      "use": "Professional project descriptions; original private file is not published."
+    }
+  ],
+  "public_references": [
+    {
+      "url": "https://mil.korea.ac.kr/PagePublication.php?type=award",
+      "use": "KCC 2024 award, title, authors"
+    },
+    {
+      "url": "https://mil.korea.ac.kr/PagePublication.php?type=domc",
+      "use": "Paper titles, authors and conference dates"
+    },
+    {
+      "url": "https://github.com/MunbongChoi/Sound_Source_Separation",
+      "use": "Related public sound-separation experiments"
+    },
+    {
+      "url": "https://muzig.ai/ko/",
+      "use": "Existing public service reference"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "audio-query",
+      "kind": "Conceptual task diagram"
+    },
+    {
+      "id": "music",
+      "kind": "Conceptual model-routing diagram"
+    }
+  ],
+  "spatial_evidence": "Existing presentation provenance in assets/ppt-20261030/provenance.json and existing labeling example retained."
+}
