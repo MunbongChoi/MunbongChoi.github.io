@@ -39,6 +39,26 @@
     {
       "id": "music",
       "kind": "Conceptual model-routing diagram"
+    },
+    {
+      "id": "spatial-data",
+      "kind": "Conceptual workflow diagram; not a measured map or new experimental result"
+    },
+    {
+      "id": "spatial-models",
+      "kind": "Conceptual workflow diagram; not a measured map or new experimental result"
+    },
+    {
+      "id": "spatial-training",
+      "kind": "Conceptual workflow diagram; not a measured map or new experimental result"
+    },
+    {
+      "id": "spatial-inference",
+      "kind": "Conceptual workflow diagram; not a measured map or new experimental result"
+    },
+    {
+      "id": "spatial-linkage",
+      "kind": "Conceptual workflow diagram; not a measured map or new experimental result"
     }
   ],
   "spatial_evidence": "Existing presentation provenance in assets/ppt-20261030/provenance.json and existing labeling example retained.",
@@ -47,7 +67,12 @@
     "structure": "Technical choices integrated into project problem-solving narratives.",
     "technology_contexts_integrated": 68,
     "separate_technology_directory": false,
-    "main_explanations_visible_by_default": true,
-    "legacy_technology_links_resolve_within_projects": true
+    "legacy_technology_links_resolve_within_projects": true,
+    "spatial_presentation": {
+      "topic_tabs": 5,
+      "concise_problem_solution": true,
+      "details_available_in_each_tab": true,
+      "diagrams_are_schematic": true
+    }
   }
 }
